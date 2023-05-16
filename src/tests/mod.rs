@@ -1,8 +1,6 @@
 #[cfg(test)]
-mod client_tests;
 
+mod endpoint_test;
 #[cfg(test)]
-mod endpoint_tests;
 
-#[cfg(test)]
-mod http_client_tests;
+mod http_test;

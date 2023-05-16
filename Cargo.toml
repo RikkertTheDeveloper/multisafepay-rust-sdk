@@ -1,23 +1,27 @@
 [package]
 name = "multisafepay-rust-sdk"
-version = "0.1.0"
+version = "0.2.1"
+description="A MultiSafePay SDK for the Rust Programming Language"
 edition = "2021"
 authors = ["Rick Arendsen"]
 readme = "README.md"
 repository = "https://github.com/rikkertthedeveloper/multisafepay-rust-sdk"
 keywords = ["multisafepay", "ecommerce"]
+license-file = "LICENSE.txt"
+categories = ["sdk", "multisafepay"]
+documentation = "https://docs.rs/multisafepay-rust-sdk"
 
 [dependencies]
-minreq = { version = "2.8.0", features = ["https"] }
-
-[dev-dependencies]
-pretty_assertions = "1"
+curl = "0.4.44"
 
 [profile.release]
-panic = "unwind"
+panic = "abort"
 opt-level = 3
+lto = true
+codegen-units = 1
 
 [profile.production]
+panic = "abort"
 inherits = "release"
 lto = true
 codegen-units = 1

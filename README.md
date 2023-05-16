@@ -17,6 +17,3 @@ The MultiSafePay Rust SDK makes use of the "Cargo" toolchain included within rus
 
 ## Tests
 The tests within this project can be ran with the `cargo test` command. This project has built-in tests for all classes associated with the libary.
-
-### Offline testing
-This library makes use of mockup data sites such as **DummyJSON** in order to test it's internal parsing tools. If you'd like to fully test offline, you can add the `--offline` flag to your `cargo test` command.
