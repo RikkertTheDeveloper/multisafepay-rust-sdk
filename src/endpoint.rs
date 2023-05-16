@@ -63,9 +63,10 @@ impl Endpoint {
     }
 
     pub fn get_url(&self, is_debug: bool) -> String {
-        match is_debug {
-            true => format!("https://testapi.multisafepay.com/{}", &self.url),
-            false => format!("https://multisafepay.com/{}", &self.url),
+        if is_debug {
+            format!("https://testapi.multisafepay.com/{}", self.url)
+        } else {
+            format!("https://multisafepay.com/{}", self.url)
         }
     }
 

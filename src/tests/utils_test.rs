@@ -10,5 +10,6 @@ fn test_restful_url() {
         .parameter(restful_url_parameter.to_owned())
         .format();
 
-    assert_eq!(new_restful_url, "https://example.com/1");
+    assert!(new_restful_url.is_ok());
+    assert_eq!(new_restful_url.unwrap(), "https://example.com/1");
 }

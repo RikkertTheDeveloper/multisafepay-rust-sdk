@@ -38,15 +38,19 @@ impl ClientBuilder {
             .parameter(order_id.to_string())
             .format();
 
-        let http_result = HttpRequestBuilder::new()
+        if restful_url_info.is_ok() {
+            let http_result = HttpRequestBuilder::new()
             .api_key(&self.api_key.as_ref().unwrap().to_owned())
-            .url(restful_url_info.as_ref())
+            .url(restful_url_info.as_ref().unwrap())
             .method(retrieval_endpoint.get_method().to_owned())
             .execute();
 
-        match http_result {
-            Ok(data) => Ok(data),
-            Err(err) => Err(err),
+            match http_result {
+                Ok(data) => Ok(data),
+                Err(err) => Err(err),
+            }
+        } else {
+             panic!("Failed to verify RESTful URL.")
         }
     }
 

@@ -89,6 +89,7 @@ impl<'a> HttpRequestBuilder<'a> {
                 response_data.extend_from_slice(data);
                 Ok(data.len())
             })?;
+
             transfer.perform()?;
         }
 

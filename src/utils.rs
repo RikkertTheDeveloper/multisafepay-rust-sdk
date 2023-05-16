@@ -21,11 +21,10 @@ impl RestfulUrlBuilder {
         self
     }
 
-    pub fn format(&self) -> String {
-        format!(
-            "{}/{}",
-            self.url.as_ref().unwrap(),
-            self.parameter.as_ref().unwrap()
-        )
+    pub fn format(&self) -> Result<String, &'static str> {
+        let url = self.url.as_ref().ok_or("URL not provided")?;
+        let parameter = self.parameter.as_ref().ok_or("Parameter not provided")?;
+
+        Ok(format!("{}/{}", url, parameter))
     }
 }
