@@ -17,3 +17,6 @@ The MultiSafePay Rust SDK makes use of the "Cargo" toolchain included within rus
 
 ## Tests
 The tests within this project can be ran with the `cargo test` command. This project has built-in tests for all classes associated with the libary.
+
+## Please Note
+As of **16-05-2023**, this repository is still experiencing heavy development. Please expect severe API changes in the future.

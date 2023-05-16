@@ -78,7 +78,7 @@ impl<'a> HttpRequestBuilder<'a> {
             let mut headers = List::new();
             headers.append(&format!("api_key: {}", api_key))?;
             headers.append("accept: application/json")?;
-            headers.append("content-type: application/json")?;
+            headers.append("Content-Type: application/json")?;
             self.easy.http_headers(headers)?;
         }
 
