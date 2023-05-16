@@ -2,6 +2,7 @@ use crate::http::HttpMethod;
 
 pub enum EndpointAction {
     CreateTransaction,
+    GetTransaction
 }
 
 impl EndpointAction {
@@ -12,7 +13,11 @@ impl EndpointAction {
     pub fn endpoint(&self, api_key: String) -> Endpoint {
         match self {
             Self::CreateTransaction => {
-                Endpoint::new("https://testapi.multisafepay.com/v1/json/orders".to_owned(), HttpMethod::POST, api_key)
+                Endpoint::new("v1/json/orders".to_owned(), HttpMethod::POST, api_key)
+            },
+
+            Self::GetTransaction => {
+                Endpoint::new("v1/json/orders".to_owned(), HttpMethod::GET, api_key)
             }
         }
     }
@@ -57,7 +62,14 @@ impl Endpoint {
         &self.method
     }
 
-    pub fn get_url(&self) -> &str {
-        &self.url
+    pub fn get_url(&self, is_debug: bool) -> String {
+        match is_debug {
+            true => format!("https://testapi.multisafepay.com/{}", &self.url),
+            false => format!("https://multisafepay.com/{}", &self.url)
+        }
+    }
+
+    pub fn get_api_key(&self) -> &str {
+        &self.api_key
     }
 }
