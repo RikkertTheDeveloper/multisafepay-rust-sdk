@@ -1,6 +1,6 @@
 [package]
-name = "multisafepay-rust-sdk"
-version = "0.2.3"
+name = "multisafepay"
+version = "0.2.4"
 description="A MultiSafePay SDK for the Rust Programming Language"
 edition = "2021"
 authors = ["Rick Arendsen"]
