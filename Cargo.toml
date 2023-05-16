@@ -1,6 +1,6 @@
 [package]
 name = "multisafepay"
-version = "0.2.4"
+version = "0.2.5"
 description="A MultiSafePay SDK for the Rust Programming Language"
 edition = "2021"
 authors = ["Rick Arendsen"]
@@ -9,7 +9,7 @@ repository = "https://github.com/rikkertthedeveloper/multisafepay-rust-sdk"
 keywords = ["multisafepay", "ecommerce"]
 license-file = "LICENSE.txt"
 categories = ["sdk", "multisafepay"]
-documentation = "https://docs.rs/multisafepay-rust-sdk"
+documentation = "https://docs.rs/multisafepay"
 
 [dependencies]
 curl = "0.4.44"

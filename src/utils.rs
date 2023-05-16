@@ -1,13 +1,13 @@
 pub struct RestfulUrlBuilder {
     url: Option<String>,
-    parameter: Option<String>
+    parameter: Option<String>,
 }
 
 impl RestfulUrlBuilder {
     pub fn new() -> Self {
         Self {
             url: None,
-            parameter: None
+            parameter: None,
         }
     }
 
@@ -22,6 +22,10 @@ impl RestfulUrlBuilder {
     }
 
     pub fn format(&self) -> String {
-        format!("{}/{}", self.url.as_ref().unwrap(), self.parameter.as_ref().unwrap())
+        format!(
+            "{}/{}",
+            self.url.as_ref().unwrap(),
+            self.parameter.as_ref().unwrap()
+        )
     }
 }

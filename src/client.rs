@@ -1,6 +1,8 @@
-use crate::{http::{HttpRequestBuilder}, endpoint::{EndpointActionBuilder, EndpointAction}};
 use crate::utils::RestfulUrlBuilder;
-
+use crate::{
+    endpoint::{EndpointAction, EndpointActionBuilder},
+    http::HttpRequestBuilder,
+};
 
 pub struct ClientBuilder {
     api_key: Option<String>,
@@ -22,13 +24,17 @@ impl ClientBuilder {
         self
     }
 
-    pub fn get_order(&self, order_id: String) -> Result<String, curl::Error>  {
+    pub fn get_order(&self, order_id: String) -> Result<String, curl::Error> {
         let retrieval_endpoint = EndpointActionBuilder::new()
             .api_key(self.api_key.as_ref().unwrap().to_owned())
             .build(EndpointAction::GetTransaction);
 
         let restful_url_info = RestfulUrlBuilder::new()
-            .url(retrieval_endpoint.get_url(self.is_debug.unwrap()).to_owned())
+            .url(
+                retrieval_endpoint
+                    .get_url(self.is_debug.unwrap())
+                    .to_owned(),
+            )
             .parameter(order_id.to_string())
             .format();
 
@@ -40,7 +46,7 @@ impl ClientBuilder {
 
         match http_result {
             Ok(data) => Ok(data),
-            Err(err) => Err(err)
+            Err(err) => Err(err),
         }
     }
 
@@ -59,7 +65,7 @@ impl ClientBuilder {
 
         match http_result {
             Ok(data) => Ok(data),
-            Err(err) => Err(err)
+            Err(err) => Err(err),
         }
     }
 }
