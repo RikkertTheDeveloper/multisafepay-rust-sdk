@@ -11,11 +11,9 @@ impl EndpointAction {
 
     pub fn endpoint(&self, api_key: String) -> Endpoint {
         match self {
-            Self::CreateTransaction => Endpoint::new(
-                "https://testapi.multisafepay.com/v1/json/orders".to_owned(),
-                HttpMethod::POST,
-                api_key,
-            ),
+            Self::CreateTransaction => {
+                Endpoint::new("https://testapi.multisafepay.com/v1/json/orders".to_owned(), HttpMethod::POST, api_key)
+            }
         }
     }
 }
