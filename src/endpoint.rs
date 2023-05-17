@@ -66,7 +66,7 @@ impl Endpoint {
         if is_debug {
             format!("https://testapi.multisafepay.com/{}", self.url)
         } else {
-            format!("https://multisafepay.com/{}", self.url)
+            format!("https://api.multisafepay.com/{}", self.url)
         }
     }
 
