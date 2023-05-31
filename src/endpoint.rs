@@ -38,7 +38,7 @@ impl EndpointActionBuilder {
     }
 
     pub fn build(self, action: EndpointAction) -> Endpoint {
-        let api_key = self.api_key.expect("API key not specified");
+        let api_key: String = self.api_key.expect("API key not specified");
         action.endpoint(api_key)
     }
 }

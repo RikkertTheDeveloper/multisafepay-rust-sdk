@@ -18,7 +18,6 @@ impl HttpMethod {
         }
     }
 }
-
 pub struct HttpRequestBuilder<'a> {
     easy: Easy,
     method: Option<HttpMethod>,
@@ -59,12 +58,13 @@ impl<'a> HttpRequestBuilder<'a> {
     }
 
     pub fn execute(&mut self) -> Result<String, curl::Error> {
-        let method = self
+        let method: &str = self
             .method
             .as_ref()
             .expect("HTTP method not specified")
             .as_str();
-        let url = self.url.expect("URL not specified");
+
+        let url: &str = self.url.expect("URL not specified");
 
         self.easy.url(url)?;
         self.easy.custom_request(method)?;
@@ -75,10 +75,12 @@ impl<'a> HttpRequestBuilder<'a> {
         }
 
         if let Some(api_key) = self.api_key {
-            let mut headers = List::new();
+            let mut headers: List = List::new();
+
             headers.append(&format!("api_key: {}", api_key))?;
             headers.append("accept: application/json")?;
             headers.append("Content-Type: application/json")?;
+
             self.easy.http_headers(headers)?;
         }
 
